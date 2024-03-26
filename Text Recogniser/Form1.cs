@@ -25,6 +25,7 @@ namespace Text_Recogniser
             comboBox1.Items.Add("ENG");
             comboBox1.Items.Add("RUS + ENG");
             comboBox1.SelectedItem = "RUS";
+            label1.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -109,6 +110,21 @@ namespace Text_Recogniser
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.AddExtension= true;
+            dialog.DefaultExt = ".txt"; // Default file extension
+            dialog.Filter = "Text documents (.txt)|*.txt";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.SaveFile(dialog.FileName);
+                label1.Text = "File succesfully saved!";
+            }
+            else
+                label1.Text = "File was not saved";
         }
     }
 }
